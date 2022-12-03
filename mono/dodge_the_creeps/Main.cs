@@ -34,7 +34,7 @@ public partial class Main : Node
         score = 0;
 
         var player = GetNode<Player>("Player");
-        var startPosition = GetNode<Position2D>("StartPosition");
+        var startPosition = GetNode<Marker2D>("StartPosition");
         player.Start(startPosition.Position);
 
         GetNode<Timer>("StartTimer").Start();
@@ -80,11 +80,11 @@ public partial class Main : Node
         mob.Position = mobSpawnLocation.Position;
 
         // Add some randomness to the direction.
-        direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
+        direction += (float)GD.RandfRange(-Mathf.Pi / 4, Mathf.Pi / 4);
         mob.Rotation = direction;
 
         // Choose the velocity for the mob.
-        var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
+        var velocity = new Vector2((float)GD.RandfRange(150.0, 250.0), 0);
         mob.LinearVelocity = velocity.Rotated(direction);
     }
 }
